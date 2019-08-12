@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route } from 'react-router-dom';
 import data from './data';
 
@@ -23,6 +23,15 @@ function App() {
 		let tempArr = cart.filter(item => item.id !== id) 
 		setCart([...tempArr])
 	}
+
+	useEffect(()=> {
+		setCart(JSON.parse(localStorage.getItem('cart')))
+	},[])
+
+	useEffect(() => {
+		console.log('Cart useEffect')
+		localStorage.setItem('cart', JSON.stringify([...cart]))
+	}, [cart])
 
 	return (
 		<CartContext.Provider value={{cart, removeItem}}>
