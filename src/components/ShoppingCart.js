@@ -14,7 +14,6 @@ const ShoppingCart = () => {
 		}, 0).toFixed(2);
 	};
 
-	console.log(cart)
 	return (
 		<div className="shopping-cart">
 			{cart.map((item, index) => (

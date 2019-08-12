@@ -19,17 +19,18 @@ function App() {
 		setCart([...cart, item]);
 	};
 
-	const removeItem = id => {
-		let tempArr = cart.filter((item, index) => index !== id) 
+	const removeItem = clickedIndex => {
+		let tempArr = cart.filter((item, index) => index !== clickedIndex) 
 		setCart([...tempArr])
 	}
 
+	// Component mounts
 	useEffect(()=> {
 		setCart(JSON.parse(localStorage.getItem('cart')))
 	}, [])
 
+	// Cart updates
 	useEffect(() => {
-		console.log('Cart useEffect')
 		localStorage.setItem('cart', JSON.stringify([...cart]))
 	}, [cart])
 
