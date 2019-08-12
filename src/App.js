@@ -20,13 +20,13 @@ function App() {
 	};
 
 	const removeItem = id => {
-		let tempArr = cart.filter(item => item.id !== id) 
+		let tempArr = cart.filter((item, index) => index !== id) 
 		setCart([...tempArr])
 	}
 
 	useEffect(()=> {
 		setCart(JSON.parse(localStorage.getItem('cart')))
-	},[])
+	}, [])
 
 	useEffect(() => {
 		console.log('Cart useEffect')
